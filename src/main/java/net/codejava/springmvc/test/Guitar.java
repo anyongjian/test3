@@ -2,7 +2,7 @@ package net.codejava.springmvc.test;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class Guitar implements Instrument {
 
 	public Guitar() {
