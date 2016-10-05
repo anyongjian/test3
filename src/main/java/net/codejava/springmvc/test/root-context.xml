@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+					    http://www.springframework.org/schema/beans/spring-beans.xsd
+					    http://www.springframework.org/schema/context
+					    http://www.springframework.org/schema/context/spring-context.xsd
+					    http://www.springframework.org/schema/aop 
+					    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- <context:annotation-config /> -->
+	<context:component-scan base-package="net.codejava.springmvc">
+		<context:include-filter type="assignable"
+			expression="net.codejava.springmvc.test.Instrument" />
+	</context:component-scan>
+
+	<!-- <bean id="sonnet29" class="net.codejava.springmvc.test.Sonnet29" /> -->
+
+	<!-- 杂技演奏者 -->
+	<!-- <bean id="duke" class="net.codejava.springmvc.test.Juggler"> <constructor-arg 
+		value = "15"/> </bean> <bean id="poeticDuke" class="net.codejava.springmvc.test.PoeticJuggler"> 
+		<constructor-arg value="15"/> <constructor-arg ref = "sonnet29"/> </bean> -->
+
+	<!-- 乐器演奏者 -->
+	<!-- <bean id="kenny" class="net.codejava.springmvc.test.Instrumentalist"> 
+		<property name="song" value="传奇"/> <property name="age" value="14"/> <property 
+		name="instrument" ref="saxophone"/> </bean> -->
+	<!-- <bean id="saxophone" class="net.codejava.springmvc.test.Saxophone"></bean> 
+		<bean id="guitar" class="net.codejava.springmvc.test.Guitar"></bean> -->
+	<!-- 一人乐队 -->
+	<!-- <bean id="hank" class="net.codejava.springmvc.test.OneManBand"> <property 
+		name="instruments"> <list> <ref bean = "saxophone" /> <ref bean = "guitar" 
+		/> </list> </property> </bean> -->
+	<!-- 自动装配-byName -->
+	<!-- <bean id="kenny2" class="net.codejava.springmvc.test.Instrumentalist" 
+		autowire="byName"> <property name="song" value="大海"/> <property name="age" 
+		value="14"/> </bean> <bean id="instrument" class="net.codejava.springmvc.test.Saxophone"></bean> -->
+
+	<!-- 自动装配-byType -->
+	<!-- <bean id="kenny3" class="net.codejava.springmvc.test.Instrumentalist" 
+		autowire="byType"> <property name="song" value="大海"/> <property name="age" 
+		value="14"/> </bean> -->
+	<bean id="audience" class="net.codejava.springmvc.test.Audience"></bean>
+
+	<!-- <aop:config>
+		<aop:aspect ref="audience">
+			<aop:before
+				pointcut="execution(* net.codejava.springmvc.test.Performer.perform(..))   
+				 and within(net.codejava.springmvc.test.*)"
+				method="takeSeats" />
+			<aop:before
+				pointcut="execution(* net.codejava.springmvc.test.Performer.perform(..))   
+				 and within(net.codejava.springmvc.test.*)"
+				method="turnOffPhones" />
+			<aop:after-returning
+				pointcut="execution(* net.codejava.springmvc.test.Performer.perform(..))   
+				 and within(net.codejava.springmvc.test.*)"
+				method="applaud" />
+			<aop:after-throwing
+				pointcut="execution(* net.codejava.springmvc.test.Performer.perform(..))   
+				 and within(net.codejava.springmvc.test.*)"
+				method="demandRefund" />
+		</aop:aspect>
+	</aop:config> -->
+	<!-- 环绕通知 -->
+	<aop:config>
+		<aop:aspect ref="audience">
+			<aop:pointcut id="performance2" expression="execution(* net.codejava.springmvc.test.Performer.perform(..))   
+				 and within(net.codejava.springmvc.test.*)"/>
+			<aop:around pointcut-ref="performance2"
+			method="watchPerformance"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
