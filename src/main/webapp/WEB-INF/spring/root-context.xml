@@ -20,29 +20,29 @@
 
 	<context:property-placeholder location="WEB-INF/properties/spring.properties"/>
 
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ayj" />
 		<property name="user" value="root" />
 		<property name="password" value="" />
-	</bean>
+	</bean> -->
 
 	<!-- Declare a transaction manager -->
-	<bean id="transactionManager"
+<!-- 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
-	</bean>
+	</bean> -->
 
 	<!-- define the SqlSessionFactory, notice that configLocation is not needed 
 		when you use MapperFactoryBean -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!-- 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="WEB-INF/mybatis/sqlmap-config.xml" />
-	</bean>
+	</bean> -->
 	<!-- scan for mappers and let them be autowired -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+  <!--   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="${MapperInterfacePackage}" />
-	</bean>
+	</bean> -->
 
 	<!-- p:dataSource-ref="dataSource" /> -->
 	<!-- Enable annotation style of managing transactions -->

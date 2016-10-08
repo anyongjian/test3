@@ -6,7 +6,7 @@ import java.util.List;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.codejava.springmvc.appService.UserService;
 import net.codejava.springmvc.webController.HomeController;
 @Controller
 @RequestMapping(value = "user")
 public class UserController {
+	
+	@Autowired
+	private UserService userService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -28,7 +32,8 @@ public class UserController {
 	@RequestMapping(value = "getName/{name}",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
 	public String getUserName(Model model,@PathVariable(value = "name") String name){
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("name", name);
+		String name1 = userService.getUserName();
+		jsonObject.put("name", name1);
 		return jsonObject.toString();
 	}
 	

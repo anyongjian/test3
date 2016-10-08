@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties"></properties>
+    <typeAliases> 	
+        <typeAlias alias="User" type="po.User"/> 
+        <typeAlias alias="article" type="po.Article"/> 
+    </typeAliases> 
+    <!-- 加载映射文件 -->
+    <mappers>
+        <!-- <mapper resource="model/User.xml"/> -->
+        <!-- <mapper class="model.UserMapper"/> -->
+        <package name="net.codejava.springmvc.mapper"/><!-- net.codejava.springmvc.mapper.UserMapper -->
+    </mappers>
+</configuration>

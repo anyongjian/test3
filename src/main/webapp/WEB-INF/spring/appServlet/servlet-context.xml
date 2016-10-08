@@ -23,15 +23,6 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-     <!-- jdbc:mysql://localhost:3306/ayj?characterEncoding=utf-8 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"  
-			value="jdbc:mysql://localhost:3306/ayj?autoReconnect=true&createDatabaseIfNotExist=true" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
-	</bean> 
-
 	<context:component-scan base-package="net.codejava.springmvc" />
 
 </beans:beans>
