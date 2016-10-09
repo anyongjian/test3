@@ -2,9 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.UserMapper">
+<mapper namespace="net.codejava.springmvc.mapper.UserMapper">
 
-	<select id="findUserById" parameterType="int" resultType="User">
+<resultMap type="user" id="userResultMap">
+	<!--id标示查询结果集中的唯一标示
+	  -->
+		<id column="id" property="id"/>
+		<!--对普通列的映射  -->
+		<result column="userName" property="name" />
+		<result column="userAge" property="age" />
+		<result column="userAddress" property="address" />
+	</resultMap>
+	
+	<select id="findUserById" parameterType="int" resultMap="userResultMap">
 		select * from user where id=#{value}
 	</select>
 	

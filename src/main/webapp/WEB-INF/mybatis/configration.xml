@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="db.properties"></properties>
+	<!-- <properties resource="db.properties"></properties> -->
     <typeAliases> 	
-        <typeAlias alias="User" type="po.User"/> 
-        <typeAlias alias="article" type="po.Article"/> 
+        <typeAlias alias="User" type="net.codejava.springmvc.po.User"/> 
+        <!-- <typeAlias alias="article" type="po.Article"/>  -->
     </typeAliases> 
     <!-- 加载映射文件 -->
     <mappers>

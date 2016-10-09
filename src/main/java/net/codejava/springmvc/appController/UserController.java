@@ -30,7 +30,7 @@ public class UserController {
 	//获取用户姓名(get请求)
 	@ResponseBody
 	@RequestMapping(value = "getName/{name}",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
-	public String getUserName(Model model,@PathVariable(value = "name") String name){
+	public String getUserName(Model model,@PathVariable(value = "name") String name) throws Exception{
 		JSONObject jsonObject = new JSONObject();
 		String name1 = userService.getUserName();
 		jsonObject.put("name", name1);
